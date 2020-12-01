@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Oswald:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Montserrat:wght@300&family=Oswald:wght@500&display=swap');
+@import "~bootstrap/scss/bootstrap";
+
+
+$primary-color: #001410;
+$secondary-color: #9793AD;
+$light: #E4E1FA;
+$dark: #009174;
+
+
+body {
+  padding-top: 140px;
+  background-color: $dark;
+  color: $light;
+
+}
+
+.navlogo {
+  font-family: 'Oswald', cursive;
+  color: $light;
+  font-size: 2rem;
+}
+
+.nav-link {
+  font-family: 'Lato', cursive;
+  color: $light;
+  font-size: 1.5rem;
+}
+.nav-link:hover  {
+  color: $dark;
+}
+
+.navigation {
+  background-color: $primary-color;
+  color: $light;
+}
+
+
+h1 {
+  color: $secondary-color;
+  font-family: 'Pathway Gothic One', cursive;
+}
