@@ -10,6 +10,14 @@
             <h1 class="mt-0">{{ program.title }}</h1>
             <p>{{ program.summary }}</p>
             <p>Catégorie : {{ program.category.name }}</p>
+            <p>Saisons disponibles :</p>
+            <ul>
+                {% for season in seasons %}
+                    <li><a href="/programs/{{ program.id}}/seasons/{{ season.number }}">Season number : {{ season.number }} </a></li>
+                {% else %}
+                    Aucune saison trouvée.
+                {% endfor %}
+            </ul>
         </div>
     </div>
 

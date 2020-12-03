@@ -1,4 +1,14 @@
 {% extends 'base.html.twig'%}
 {% block body %}
     <h1>Bienvenue sur {{ website }} </h1>
+    <p>
+        <a href="{{ path('program_index') }}">
+            Liste des programmes
+        </a>
+    </p>
+    <p>
+        <a href="{{ path('category_index') }}">
+            Liste des catégories
+        </a>
+    </p>
 {% endblock %}
