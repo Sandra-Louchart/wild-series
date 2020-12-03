@@ -5,6 +5,8 @@ namespace App\Controller;
 
 use App\Entity\Category;
 use App\Entity\Program;
+use App\Repository\CategoryRepository;
+use App\Repository\ProgramRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -20,14 +22,12 @@ class CategoryController extends AbstractController
      * Show all rows from Category's entity
      *
      * @Route("/", name="index")
-     * @return Response A response instance
+     * @param CategoryRepository $categoryRepository
+     * @return Response
      */
-    public function index()
+    public function index(CategoryRepository $categoryRepository) :Response
     {
-        $categories = $this->getDoctrine()
-            ->getRepository(Category::class)
-            ->findAll();
-
+        $categories = $categoryRepository->findAll();
         return $this->render('category/index.html.twig', [
             'categories' => $categories
         ]);
@@ -38,9 +38,11 @@ class CategoryController extends AbstractController
      *
      * @Route("/{categoryName<^[a-zA-Z]+$>}", methods={"GET"}, name="show")
      * @param string $categoryName
+     * @param CategoryRepository $categoryRepository
+     * @param ProgramRepository $programRepository
      * @return Response
      */
-    public function show(string $categoryName)
+    public function show(string $categoryName, CategoryRepository $categoryRepository, ProgramRepository $programRepository): Response
     {
         $category = $this->getDoctrine()
             ->getRepository(Category::class)
