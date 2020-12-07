@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\SeasonRepository;
+use App\Entity\Program;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -130,8 +131,6 @@ class Season
                 $episode->setSeason(null);
             }
         }
-
         return $this;
-
     }
 }
