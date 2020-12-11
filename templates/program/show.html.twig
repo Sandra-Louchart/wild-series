@@ -1,4 +1,3 @@
-{# templates/program/show.html.twig #}
 {% extends 'base.html.twig' %}
 {% block title %}Série #{{ program.id }}{% endblock %}
 
@@ -13,7 +12,9 @@
             <p>Saisons disponibles :</p>
             <ul>
                 {% for season in seasons %}
-                    <li><a href="/programs/{{ program.id}}/seasons/{{ season.number }}">Season number : {{ season.number }} </a></li>
+                    <li><a href="{{ path("program_season_show", { program: program.id , season: season.id }) }}">
+                            Saison {{ season.number }}
+                        </a></li>
                 {% else %}
                     Aucune saison trouvée.
                 {% endfor %}

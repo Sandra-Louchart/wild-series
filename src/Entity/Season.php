@@ -3,7 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\SeasonRepository;
-use App\Entity\Program;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -31,12 +30,12 @@ class Season
     private $year;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
      */
     private $description;
 
     /**
-     * @ORM\ManyToOne(targetEntity=program::class, inversedBy="seasons")
+     * @ORM\ManyToOne(targetEntity=Program::class, inversedBy="seasons")
      * @ORM\JoinColumn(nullable=false)
      */
     private $program;
@@ -50,7 +49,6 @@ class Season
     {
         $this->episodes = new ArrayCollection();
     }
-
 
     public function getId(): ?int
     {
@@ -86,19 +84,19 @@ class Season
         return $this->description;
     }
 
-    public function setDescription(string $description): self
+    public function setDescription(?string $description): self
     {
         $this->description = $description;
 
         return $this;
     }
 
-    public function getProgram(): ?program
+    public function getProgram(): ?Program
     {
         return $this->program;
     }
 
-    public function setProgram(?program $program): self
+    public function setProgram(?Program $program): self
     {
         $this->program = $program;
 
@@ -131,6 +129,7 @@ class Season
                 $episode->setSeason(null);
             }
         }
+
         return $this;
     }
 }

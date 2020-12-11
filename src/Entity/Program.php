@@ -174,4 +174,8 @@ class Program
 
         return $this;
     }
+
+    public function persist(Program $program)
+    {
+    }
 }
