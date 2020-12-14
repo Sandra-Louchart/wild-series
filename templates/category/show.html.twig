@@ -12,7 +12,7 @@
                         <img class="poster" src="{{ program.poster }}" alt="{{ program.title }} poster">
                     </div>
                     <div class="card-body">
-                        <a href="{{ path("program_show", { id: program.id }) }}"><h2>{{ program.title }}</h2></a>
+                        <a href="{{ path("program_show", { slug: program.slug }) }}"><h2>{{ program.title }}</h2></a>
                         <p>{{ program.summary }}</p>
                         <p>Catégorie : {{ category.name }}</p>
                     </div>
