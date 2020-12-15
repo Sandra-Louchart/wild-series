@@ -51,7 +51,7 @@ class EpisodeController extends AbstractController
             $entityManager->flush();
             $email = (new Email())
                 ->from($this->getParameter('mailer_from'))
-                ->to($this->getParameter('mailer_to'))
+                ->to('test@test.com')
                 ->subject('Un nouvel épisode vient d\'être publié !')
                 ->html($this->renderView('episode/newEpisodeEmail.html.twig', ['episode' => $episode]));
             $mailer->send($email);
