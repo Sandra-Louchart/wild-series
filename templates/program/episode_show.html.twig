@@ -9,5 +9,20 @@
         <div class="mb-2">
             {{ episode.synopsis }}
         </div>
+        <h3> Commentaires : </h3>
+        <ul>
+            {% for comment in episode.comments %}
+                <li>De : {{ comment.author.email }} <br>
+                    Note : {{ comment.rate }} <br>
+                    Commentaire : {{ comment.comment }}
+                </li>
+            {% endfor %}
+        </ul>
+        {% if app.user %}
+            <h3>Ajouter un commentaire</h3>
+            {{ include('episode/_form.html.twig') }}
+        {% endif %}
+
     </div>
+
 {% endblock %}

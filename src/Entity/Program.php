@@ -49,7 +49,7 @@ class Program
     private $category;
 
     /**
-     * @ORM\OneToMany(targetEntity=Season::class, mappedBy="program")
+     * @ORM\OneToMany(targetEntity="App\Entity\Season", mappedBy="program")
      */
     private $seasons;
 
@@ -131,16 +131,23 @@ class Program
         return $this->seasons;
     }
 
+    /**
+     * @param Season $season
+     * @return Program
+     */
     public function addSeason(Season $season): self
     {
         if (!$this->seasons->contains($season)) {
             $this->seasons[] = $season;
             $season->setProgram($this);
         }
-
         return $this;
     }
 
+    /**
+     * @param Season $season
+     * @return Program
+     */
     public function removeSeason(Season $season): self
     {
         if ($this->seasons->removeElement($season)) {
@@ -149,7 +156,6 @@ class Program
                 $season->setProgram(null);
             }
         }
-
         return $this;
     }
 

@@ -27,3 +27,6 @@ link quest 17 https://www.loom.com/share/9eeb8acd3fb44c59913d910c2f845477
 
 
 link quest 18 https://www.loom.com/share/de69a675fe034ecb99c280e1dfac6959
+
+
+link quest 19 https://www.loom.com/share/ba45b8bab87f4bb5a0b48545ecbc1e05
