@@ -7,6 +7,8 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 use App\Service\Slugify;
+use App\Entity\User;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class ProgramFixtures extends Fixture implements DependentFixtureInterface
 {
@@ -60,6 +62,7 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface
             $program->setSummary($data['summary']);
             $program->setPoster($data['poster']);
             $program->setCategory($this->getReference($data['category']));
+            $program->getOwner($this->getReference('user_'.rand(0,19)));
             $manager->persist($program);
             $this->addReference('program_' . $i, $program);
             $i++;

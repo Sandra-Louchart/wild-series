@@ -16,6 +16,11 @@
                     Note : {{ comment.rate }} <br>
                     Commentaire : {{ comment.comment }}
                 </li>
+                {% if app.user %}
+                    {% if is_granted("ROLE_ADMIN") or app.user.email == comment.author.email %}
+                        {{ include('program/_deleteComment_form.html.twig') }}
+                    {% endif %}
+                {% endif %}
             {% endfor %}
         </ul>
         {% if app.user %}
