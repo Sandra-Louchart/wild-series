@@ -5,6 +5,7 @@ use App\Entity\Program;
 use App\Entity\Season;
 use App\Entity\Episode;
 use App\Entity\Comment;
+use App\Form\SearchProgramFormType;
 use App\Repository\ProgramRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -27,14 +28,27 @@ class ProgramController extends AbstractController
 {
     /**
      * @Route("/", name="index")
+     * @param Request $request
      * @param ProgramRepository $programRepository
      * @return Response
      */
-    public function index(ProgramRepository $programRepository): Response
+    public function index(Request $request, ProgramRepository $programRepository): Response
     {
-        $programs = $programRepository->findAll();
+        $programs = $this->getDoctrine()
+            ->getRepository(Program::class)
+            ->findAll();
+        $searchForm = $this->createForm(SearchProgramFormType::class);
+        $searchForm->handleRequest($request);
+        if ($searchForm->isSubmitted() && $searchForm->isValid()) {
+            $search = $searchForm->getData()['search'];
+            $programs = $programRepository->findLikeName($search);
+        } else {
+            $programs = $programRepository->findAll();
+        }
+
         return $this->render('program/index.html.twig', [
-            'programs' => $programs
+            'programs' => $programs,
+            'form'=> $searchForm->createView(),
         ]);
     }
 
