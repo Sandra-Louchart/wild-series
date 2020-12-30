@@ -7,6 +7,7 @@ use App\Entity\Episode;
 use App\Entity\Comment;
 use App\Entity\User;
 use App\Form\SearchProgramFormType;
+use App\Repository\CategoryRepository;
 use App\Repository\ProgramRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -233,6 +234,18 @@ class ProgramController extends AbstractController
 
         return $this->json([
             'isInWatchlist' => $this->getUser()->isInWatchlist($program)
+        ]);
+    }
+
+    /**
+     * @Route("/list/category", name="list_category")
+     * @param CategoryRepository $categoryRepository
+     * @return Response
+     */
+    public function navbarTop(CategoryRepository $categoryRepository): Response
+    {
+        return $this->render('_navbartop.html.twig', [
+            'categories' => $categoryRepository->findBy([], ['id' => 'DESC'])
         ]);
     }
 }
