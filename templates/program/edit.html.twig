@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Program{% endblock %}
+{% block title %}{{ 'program'|trans }}{% endblock %}
 
 {% block body %}
-    <h1>Modification Programme </h1>
+    <h1>{{ 'all.program'|trans }} </h1>
 
     {{ include('program/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('program_index') }}">Retour à la lsite</a>
+    <a href="{{ path('program_index') }}">{{ 'back.program'|trans }}</a>
 {% endblock %}

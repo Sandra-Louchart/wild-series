@@ -14,21 +14,25 @@
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <li class="nav-item"><a class="nav-link h4" href="{{ path('program_index') }}">Séries</a></li>
-                    <li class="nav-item"><a class="nav-link h4" href="{{ path('actor_index') }}">Acteurs</a></li>
-                    <li class="nav-item"><a class="nav-link h4" href="{{ path('category_index') }}">Catégories</a></li>
+                    <li class="nav-item"><a class="nav-link h4" href="{{ path('program_index') }}">{{ 'program'|trans }}</a></li>
+                    <li class="nav-item"><a class="nav-link h4" href="{{ path('actor_index') }}">{{ 'actor'|trans }}</a></li>
+                    <li class="nav-item"><a class="nav-link h4" href="{{ path('category_index') }}">{{ 'category'|trans }}</a></li>
                 </ul>
+                <a class="nav-item" href="{{ path('app_index', {'_locale':'fr'}) }}">Fr</a>
+                <a class="nav-item" href="{{ path('app_index', {'_locale':'en'}) }}">En</a>
             </div>
         </div>
 
         <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
             <ul class="navbar-nav ml-auto">
                 {% if app.user %}
-                    {{ app.user.email }}
-                    <a href="{{ path('app_logout') }}"> Se déconnecter</a>
+                    {% trans with {'%username%': app.user.email} %}
+                        hello_username
+                    {% endtrans %} !
+                    <a href="{{ path('app_logout') }}"> {{ 'account.logout'|trans }}</a>
                 {% else %}
-                    <a href="{{ path('app_login') }}"> Se connecter</a>
-                    <a href="{{ path('app_register') }}"> Créer un compte</a>
+                    <a href="{{ path('app_login') }}"> {{ 'account.login'|trans }}</a>
+                    <a href="{{ path('app_register') }}"> {{ 'account.created'|trans }}</a>
                 {% endif %}
             </ul>
         </div>

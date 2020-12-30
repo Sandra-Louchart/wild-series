@@ -1,20 +1,20 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Saison {{ season.number }} de {{ program.title }}{% endblock %}
+{% block title %}{{ 'season'|trans }} {{ season.number }} {{ program.title }}{% endblock %}
 
 {% block body %}
     <div class="container-fluid ml-4">
-        <h1 class="text-center my-4">Saison {{ season.number }} Episode {{ episode.number }} of {{ program.title }}</h1>
+        <h1 class="text-center my-4">{{ 'season'|trans }} {{ season.number }} {{ 'episode'|trans }}{{ episode.number }} {{ program.title }}</h1>
         <h2>{{ episode.title }}</h2>
         <div class="mb-2">
             {{ episode.synopsis }}
         </div>
-        <h3> Commentaires : </h3>
+        <h3> {{ 'comment'|trans }} : </h3>
         <ul>
             {% for comment in episode.comments %}
-                <li>De : {{ comment.author.email }} <br>
-                    Note : {{ comment.rate }} <br>
-                    Commentaire : {{ comment.comment }}
+                <li>{{ 'of'|trans }} : {{ comment.author.email }} <br>
+                    {{ 'rate'|trans }} : {{ comment.rate }} <br>
+                    {{ 'comment'|trans }} : {{ comment.comment }}
                 </li>
                 {% if app.user %}
                     {% if is_granted("ROLE_ADMIN") or app.user.email == comment.author.email %}
@@ -24,7 +24,7 @@
             {% endfor %}
         </ul>
         {% if app.user %}
-            <h3>Ajouter un commentaire</h3>
+            <h3>{{ 'add.comment'|trans }}</h3>
             {{ include('episode/_form.html.twig') }}
         {% endif %}
 

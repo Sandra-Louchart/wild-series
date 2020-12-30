@@ -1,43 +1,43 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Saison{% endblock %}
+{% block title %} {{ 'season'|trans }} {% endblock %}
 
 {% block body %}
     <div class="container-fluid ml-4">
-        <h1 class="text-center my-4">Season {{ season.number }} of {{ program.title }}</h1>
+        <h1 class="text-center my-4">{{ 'season'|trans }} {{ season.number }} of {{ program.title }}</h1>
         <table class="table">
             <tbody>
             <tr>
-                <th>Id</th>
+                <th>{{ 'id'|trans }}</th>
                 <td>{{ season.id }}</td>
             </tr>
             <tr>
-                <ul>Liste des épisodes :
+                <ul>{{ 'all.episode'|trans }}:
                 {% for episode in season.episodes %}
                    <li><a href="{{ path("program_episode_show", { 'program_slug': program.slug , season: season.id, 'episode_slug': episode.slug }) }}">
-                        Épisode {{ episode.number }} : {{ episode.title }}
+                           {{ 'episode'|trans }} {{ episode.number }} : {{ episode.title }}
                        </a></li>
                 {% else %}
-                    Aucun épisode
+                    {{ 'no.episode.found'|trans }}
                 {% endfor %}
                 </ul>
             </tr>
             <tr>
-                <th>Numéro</th>
+                <th>{{ 'number'|trans }}</th>
                 <td>{{ season.number }}</td>
             </tr>
             <tr>
-                <th>Années</th>
+                <th>{{ 'year'|trans }}</th>
                 <td>{{ season.year }}</td>
             </tr>
             <tr>
-                <th>Description</th>
+                <th>{{ 'description'|trans }}</th>
                 <td>{{ season.description }}</td>
             </tr>
             </tbody>
         </table>
     </div>
 <a href="{{ path('program_index') }}">
-        Back programms
+    {{ 'back.program'|trans }}
     </a>
 {% endblock %}

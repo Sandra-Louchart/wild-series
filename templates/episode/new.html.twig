@@ -1,11 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Nouvel Episode{% endblock %}
+{% block title %}{{ 'new.episode'|trans }}% endblock %}
 
 {% block body %}
-    <h1>Création nouvel Episode</h1>
+    <h1>{{ 'created.new.episode'|trans }}</h1>
 
     {{ include('episode/_form.html.twig') }}
 
-    <a href="{{ path('episode_index') }}">Retour à la liste</a>
+    <a href="{{ path('episode_index') }}">
+        {{ 'back.episode'|trans }}
+    </a>
 {% endblock %}

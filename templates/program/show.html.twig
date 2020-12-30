@@ -1,5 +1,5 @@
 {% extends 'base.html.twig' %}
-{% block title %}Série #{{ program.id }}{% endblock %}
+{% block title %}{{ 'program'|trans }}{{ program.id }}{% endblock %}
 
 {% block body %}
 
@@ -8,23 +8,23 @@
         <div class="media-body">
             <h1 class="mt-0">{{ program.title }}</h1>
             <p>{{ program.summary }}</p>
-            <p>Catégorie : {{ program.category.name }}</p>
-            <p>Saisons disponibles :</p>
+            <p>{{ 'category'|trans }} : {{ program.category.name }}</p>
+            <p>{{ 'all.season'|trans }} :</p>
             <ul>
                 {% for season in seasons %}
                     <li><a href="{{ path("program_season_show", { program_slug: program.slug , season: season.id }) }}">
-                            Saison {{ season.number }}
+                            {{ 'season'|trans }} {{ season.number }}
                         </a></li>
                 {% else %}
-                    Aucune saison trouvée.
+                    {{ 'no.season.found'|trans }}
                 {% endfor %}
             </ul>
-            <p>Acteurs : </p>
+            <p>{{ 'actor'|trans }} </p>
             <ul>
                 {% for actor in program.actors %}
                 <li><a href="{{ path("actor_show", { id: actor.id }) }}">{{ actor.name }}</a></li>
                 {% else %}
-                Aucun acteur trouvé
+                    {{ 'no.actor.found'|trans }}
                 {% endfor %}
             </ul>
             <a href="{{ path('program_edit', {slug: program.slug}) }}">edit</a>
@@ -42,7 +42,7 @@
     {% endif %}
 
     <a href="{{ path('program_index') }}">
-        Retour à la liste des programmes
+        {{ 'back.program'|trans }}
     </a>
 {% endblock %}
  {% block javascripts %}

@@ -2,10 +2,10 @@
 {% block title %}Wild Series{% endblock %}
 {% block body %}
 
-    <h1>Nouvel épisode {{ episode.title }} créer</h1>
+    <h1>{{ 'new.episode'|trans }} {{ episode.title }} </h1>
 
-    <p>Salut, le nouvel épisode {{ episode.title }} est créer sur le site Wild Series</p>
+    <p>{{ 'hello_username'|trans }}, {{ 'new.episode'|trans }} {{ episode.title }} {{ 'created'|trans }}ild Series</p>
 
-    <p>Synopsis : {{episode.synopsis }} </p>
+    <p>{{ 'synopsis'|trans }} : {{episode.synopsis }} </p>
 
 {% endblock %}

@@ -2,10 +2,10 @@
 {% block title %}Wild Series{% endblock %}
 {% block body %}
 
-    <h1>New program {{ program.title }} created</h1>
+    <h1>{{ 'new.program'|trans }} {{ program.title }} {{ 'created'|trans }}</h1>
 
-    <p>Hi, the new program {{ program.title }} has been created on Wild Series</p>
+    <p>{{ 'hello_username'|trans }}, {{ 'new.program'|trans }} {{ program.title }} {{ 'created'|trans }}on Wild Series</p>
 
-    <p>Summary : {{program.summary }} </p>
+    <p>{{ 'summary'|trans }} : {{program.summary }} </p>
 
 {% endblock %}

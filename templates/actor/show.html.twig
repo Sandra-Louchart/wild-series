@@ -2,15 +2,15 @@
 {% block title %}Wild Series{% endblock %}
 {% block body %}
     <h1> {{ actor.name }} </h1>
-    <ul>Liste des films dans lesquels cet acteur a joué:
+    <ul>{{ 'actor.programs'|trans }}
         {% for program in actor.programs %}
             <li><a href="{{ path("program_show", { slug: program.slug }) }}">{{ program.title }}</a></li>
         {% else %}
-            Aucun épisode trouvé.
+            {{ 'no.serie.found'|trans }}
         {% endfor %}
     </ul>
 
     <a href="{{ path('program_index') }}">
-        Retour à la liste des programmes
+        {{ 'back.home'|trans }}
     </a>
 {% endblock %}
