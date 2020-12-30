@@ -5,8 +5,10 @@ use App\Entity\Program;
 use App\Entity\Season;
 use App\Entity\Episode;
 use App\Entity\Comment;
+use App\Entity\User;
 use App\Form\SearchProgramFormType;
 use App\Repository\ProgramRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -214,4 +216,24 @@ class ProgramController extends AbstractController
 
         return $this->redirectToRoute('program_index');
     }
+
+    /**
+     * @Route("/{slug}/watchlist",
+     *     methods={"GET","POST"}, name="watchlist")
+     * @param Program $program
+     * @param EntityManagerInterface $entityManager
+     * @return Response
+     */
+    public function addToWatchlist(Program $program, EntityManagerInterface $entityManager): Response
+    {
+        if ($this->getUser()->getWatchlist()->contains($program)) $this->getUser()->removeWatchlist($program); else {
+            $this->getUser()->addWatchlist($program);
+        }
+        $entityManager->flush();
+
+        return $this->json([
+            'isInWatchlist' => $this->getUser()->isInWatchlist($program)
+        ]);
+    }
 }
+

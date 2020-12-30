@@ -42,3 +42,6 @@ link quest 22 https://www.loom.com/share/326079a662c54b49a7a716d523190693
 
 
 link quest 23 https://www.loom.com/share/b2b98afc389e4afc8bb7e198e3f7f851
+
+
+link quest 24 https://www.loom.com/share/423a2e86797a41079fc8873e2a941d74

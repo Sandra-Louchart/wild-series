@@ -17,8 +17,15 @@
     {% else %}
         Aucune série trouvée.
     {% endfor %}
+{% if app.user %}
+ <i class="{{ app.user.isInWatchlist(programs) ? 'fas' : 'far' }} fa-heart fa-xs watchlist"></i>
+ {% endif %}
 
     <a href="{{ path('app_index') }}">
     Back home
     </a>
+
+{% endblock %}
+{% block javascripts %}
+    {{ encore_entry_script_tags('watchlist') }}
 {% endblock %}
