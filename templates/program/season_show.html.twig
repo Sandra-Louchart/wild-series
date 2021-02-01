@@ -12,6 +12,9 @@
                 <td>{{ season.id }}</td>
             </tr>
             <tr>
+                <img class="align-self-start mr-3" src="/uploads/{{program.poster}}" alt="{{ program.title }} poster">
+            </tr>
+            <tr>
                 <ul>{{ 'all.episode'|trans }}:
                 {% for episode in season.episodes %}
                    <li><a href="{{ path("program_episode_show", { 'program_slug': program.slug , season: season.id, 'episode_slug': episode.slug }) }}">

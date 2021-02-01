@@ -18,7 +18,9 @@
                     <li class="nav-item"><a class="nav-link h4" href="{{ path('actor_index') }}">{{ 'actor'|trans }}</a></li>
                 </ul>
                 <ul>
-                    {{ render(controller('App\\Controller\\ProgramController::navbarTop')) }}
+                   {#  {{ render(controller('App\\Controller\\ProgramController::navbarTop')) }} #}
+                    <li class="nav-item"><a class="nav-link h4" href="{{ path('category_index') }}">{{ 'category'|trans }}</a></li>
+
                 </ul>
                 <a class="nav-item" href="{{ path('app_index', {'_locale':'fr'}) }}">Fr</a>
                 <a class="nav-item" href="{{ path('app_index', {'_locale':'en'}) }}">En</a>
