@@ -51,3 +51,6 @@ link quest 25 https://www.loom.com/share/be3acd54c20f43f287992a981ed77317
 
 
 link quest 26 https://www.loom.com/share/26e4ab30847240b5b50c3a51d8989464
+
+
+link quest 27 https://www.loom.com/share/d860439efab9450b9f31e65148d902ac 
